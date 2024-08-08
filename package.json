@@ -1,9 +1,11 @@
 {
+  "type": "module",
   "name": "personal-web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --watch 'bin/*' --watch 'src/*' bin/index.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "2kyoungeun",
@@ -11,6 +13,8 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "node": "^22.6.0"
+    "jsonwebtoken": "^9.0.2",
+    "node": "^22.6.0",
+    "nodemon": "^3.1.4"
   }
 }
