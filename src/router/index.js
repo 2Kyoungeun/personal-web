@@ -1,5 +1,5 @@
 import express from "express";
-import joinMemberRouter from "./memberRouter.js";
+import memberRouter from "./memberRouter.js";
 
 const v1Router = express.Router();
 

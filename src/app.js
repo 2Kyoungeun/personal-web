@@ -1,10 +1,10 @@
 import http from "http";
 import express from "express";
-import loader from "./loader/index.js";
-import config from "./config/index.js";
+import loader from "./loader";
+import config from "./config";
 import AppError from "./misc/AppError";
 import commonErrors from "./misc/commonErrors";
-import apiRouter from "./router/index.js";
+import apiRouter from "./router";
 
 async function create() {
   // MongoDB에 연결
