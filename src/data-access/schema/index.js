@@ -1,5 +1,3 @@
 import memberSchema from "./member.js";
 
-export {
-    member
-};
+export default memberSchema;

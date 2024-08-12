@@ -5,15 +5,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch 'bin/*' --watch 'src/*' bin/index.js ",
+    "start": "nodemon --watch \"bin/*\" --watch \"src/*\" src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "2kyoungeun",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2",
     "node": "^22.6.0",
     "nodemon": "^3.1.4"
   }

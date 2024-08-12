@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import memberService from '../service';
+import { memberService } from '../service/index.js';
 import AppError from '../misc/AppError.js';
 import commonErrors from '../misc/commonErrors.js';
-import util from '../misc/util.js';
-import config from '../config';
+import { sanitizeObject, buildResponse } from '../misc/util.js';
+import config from '../config/index.js';
 
 const { jwtSecret: secret } = config;
 
@@ -38,7 +38,7 @@ const postSignUp = async (req, res, next) => {
       { expiresIn: '1h' }
     );
 
-    res.status(201).json(util.buildResponse(token));
+    res.status(201).json(buildResponse(token));
   } catch (err) {
     next(err);
   }
@@ -72,7 +72,7 @@ const postLogin = async (req, res, next) => {
     );
 
     res.set({ authorization: `Bearer ${token}` });
-    res.status(201).json(util.buildResponse(token));
+    res.status(201).json(buildResponse(token));
   } catch (err) {
     next(err);
   }
@@ -112,7 +112,7 @@ const getMember = async (req, res, next) => {
   try {
     const { member } = res.locals;
     const dbMember = await memberService.getMember(member.mid);
-    res.json(util.buildResponse(dbMember));
+    res.json(buildResponse(dbMember));
   } catch (err) {
     next(err);
   }
@@ -128,7 +128,7 @@ const putMember = async (req, res, next) => {
       name,
       phone
     });
-    res.json(util.buildResponse(updatedMember));
+    res.json(buildResponse(updatedMember));
   } catch (err) {
     next(err);
   }
@@ -139,7 +139,7 @@ const deleteMember = async (req, res, next) => {
   try {
     const { member } = res.locals;
     const deletedMember = await memberService.deleteMember(member.mid);
-    res.json(util.buildResponse(deletedMember));
+    res.json(buildResponse(deletedMember));
   } catch (err) {
     next(err);
   }

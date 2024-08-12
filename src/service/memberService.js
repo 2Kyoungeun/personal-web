@@ -1,4 +1,4 @@
-import memberDAO from "../data-access/memberDAO";
+import memberDAO from "../data-access/memberDAO.js";
 
 // 회원가입, 사용자 정보 저장
 const createMember = async ({ email, pwd, name, phone }) => {

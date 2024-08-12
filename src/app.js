@@ -1,14 +1,14 @@
 import http from "http";
 import express from "express";
-import loader from "./loader";
-import config from "./config";
-import AppError from "./misc/AppError";
-import commonErrors from "./misc/commonErrors";
-import apiRouter from "./router";
+import { connectMongoDB, disconnectMongoDB } from "./loader/index.js";
+import config from "./config/index.js";
+import AppError from "./misc/AppError.js";
+import commonErrors from "./misc/commonErrors.js";
+import apiRouter from "./router/index.js";
 
 async function create() {
   // MongoDB에 연결
-  await loader.connectMongoDB();
+  await connectMongoDB();
 
   console.log("express application을 초기화합니다.");
   const expressApp = express();
@@ -65,7 +65,7 @@ async function create() {
             reject(error);
           }
           console.log("- 들어오는 커넥션을 더 이상 받지 않도록 하였습니다.");
-          await loader.disconnectMongoDB();
+          await disconnectMongoDB();
           console.log("- DB 커넥션을 정상적으로 끊었습니다.");
           console.log("🟢 서버 중지 작업을 성공적으로 마쳤습니다.");
           this.isShuttingDown = false;

@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
-import AppError from "../misc/AppError";
-import commonErrors from "../misc/commonErrors";
+import AppError from "../misc/AppError.js";
+import commonErrors from "../misc/commonErrors.js";
 
 process.env.NODE_ENV = process.env.NODE_ENV ?? "development";
 console.log(

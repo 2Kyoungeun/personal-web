@@ -79,4 +79,6 @@ const checkCompleteLoginForm = (form) => (req, res, next) => {
   next();
 };
 
-export { checkCompleteSignUpForm, checkCompleteLoginForm };
+const memberMiddleware = { checkCompleteSignUpForm, checkCompleteLoginForm };
+
+export default memberMiddleware;

@@ -1,4 +1,4 @@
-import Member from "./model";
+import Member from "./model/index.js";
 import { sanitizeObject } from "../misc/util.js";
 
 // 회원 생성 함수
