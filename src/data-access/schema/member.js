@@ -5,10 +5,12 @@ const memberSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      maxlength: 25,
     },
     pwd: {
       type: String,
       required: true,
+      minlength: 4,
     },
     name: {
       type: String,
