@@ -1,8 +1,19 @@
 import express from "express";
 import { memberController } from "../controller/index.js";
 import { memberMiddleware } from "../middleware/index.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const memberRouter = express.Router();
+const metaUrl = fileURLToPath(import.meta.url);
+const thisPath = path.dirname(metaUrl);
+
+// 페이지 접근
+memberRouter.get('/sign-up', (req, res) => {
+  const loginPagePath = path.join(thisPath, '../views/login.html');
+  res.status(200).sendFile(loginPagePath);
+  console.log("로그인 페이지 접근");
+});
 
 // 회원가입
 memberRouter.post(

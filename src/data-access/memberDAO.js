@@ -3,20 +3,20 @@ import { sanitizeObject } from "../misc/util.js";
 
 // 회원 생성 함수
 const create = async ({ email, pwd, name, phone }) => {
-  const member = new Member({ email, pwd, name, phone,});
+  const member = new Member({ email, pwd, name, phone });
   await member.save();
   return member.toObject();
 };
 
 // 회원 ID로 찾기
 const findOneById = async (id) => {
-  const member = await Member.findById(id).lean();
+  const member = await Member.findById(id).lean().exec();
   return member;
 };
 
 // 회원 찾기
 const findOne = async (data) => {
-  const member = await Member.findOne(data).lean();
+  const member = await Member.findOne(data).lean().exec();
   return member;
 };
 
@@ -31,13 +31,13 @@ const updateOne = async (id, member) => {
   const updateMember = await Member.findByIdAndUpdate(id, sanitizedMember, {
     runValidators: true,
     new: true,
-  }).lean();
+  }).lean().exec();
   return updateMember;
 };
 
 // 회원 삭제
 const deleteOne = async (id) => {
-  const deletedMember = await Member.findByIdAndDelete(id).lean();
+  const deletedMember = await Member.findByIdAndDelete(id).lean().exec();
   return deletedMember;
 };
 
